@@ -1,6 +1,6 @@
 # Studio Anisa
 
-Landing page estática em HTML, CSS e JavaScript. Os arquivos para hospedagem estão em `dist/`:
+Landing page estática em HTML, CSS e JavaScript. Os arquivos para hospedagem ficam diretamente na raiz do repositório:
 
 - `index.html`: conteúdo, formulário, SEO e política CSP.
 - `styles.css`: identidade visual, responsividade e animações.
@@ -8,11 +8,11 @@ Landing page estática em HTML, CSS e JavaScript. Os arquivos para hospedagem es
 
 ## Abrir e editar
 
-Abra `dist/index.html` no navegador ou sirva `dist/` por HTTP, por exemplo `python -m http.server 8080 --directory dist`. Para publicar, envie o conteúdo de `dist/` a uma hospedagem estática com HTTPS. Não é necessário Node, npm ou compilação.
+Abra `index.html` no navegador ou sirva a raiz por HTTP, por exemplo `python -m http.server 8080`. Para publicar, envie os arquivos da raiz a uma hospedagem estática com HTTPS. Não é necessário Node, npm ou compilação.
 
 Layout e ícones usam CSS Grid e SVG nativos. Manrope, usada nos botões, vem do Google Fonts com font-display: swap. As animações usam CSS e IntersectionObserver nativo e respeitam movimento reduzido.
 
-Documentação: https://getbootstrap.com/docs/5.3/ e https://developers.google.com/fonts/docs/material_symbols
+Não há dependência de Bootstrap nem de fonte externa de ícones. Os ícones são SVG e a fonte Manrope vem do Google Fonts.
 
 ## Formulário
 
@@ -22,7 +22,7 @@ Nome, telefone brasileiro com DDD, serviço e data são validados no navegador. 
 
 ## Segurança e hospedagem
 
-Há CSP por meta tag, Referrer Policy, SRI no CSS Bootstrap e noopener/noreferrer nos links externos. O script temporário do Figma foi removido. A CSP bloqueia envio de formulários e limita conexões à própria origem: a aplicação só prepara um link de navegação para o WhatsApp. A hospedagem Sites pode acrescentar recursos próprios; qualquer mudança na CSP deve considerar o que o ambiente realmente exige.
+Há CSP por meta tag, Referrer Policy e noopener/noreferrer nos links externos. O script temporário do Figma foi removido. A CSP bloqueia envio de formulários e limita conexões à própria origem: a aplicação só prepara um link de navegação para o WhatsApp. A hospedagem Sites pode acrescentar recursos próprios; qualquer mudança na CSP deve considerar o que o ambiente realmente exige.
 
 Validação do navegador melhora a experiência, mas pode ser burlada; se adicionar servidor, valide os dados novamente e aplique proteção contra abuso e limites de requisições nele. Não há mecanismo antispam de servidor neste projeto.
 
@@ -36,5 +36,12 @@ Edite textos e serviços no HTML, cores em `:root` no CSS e o destino WhatsApp n
 
 O domínio canônico atual é https://studio-anisa.vercel.app/. robots.txt e sitemap.xml apontam para ele. Ao migrar para domínio próprio, atualizar canonical, sitemap, robots, metadados sociais e URLs dos dados estruturados juntos. O JSON-LD possui hash na CSP: ao editar o bloco, recalcular o SHA-256 do seu conteúdo exato.
 
-Publicar todo o conteúdo de dist/, incluindo vercel.json, robots.txt, sitemap.xml e imagens sociais. Atualizar lastmod somente quando houver alteração real. Não publicar tokens ou arquivos .env.
+Publicar os arquivos da raiz, incluindo vercel.json, robots.txt, sitemap.xml, imagens sociais e o arquivo de verificação do Search Console. Atualizar lastmod somente quando houver alteração real. Não publicar tokens ou arquivos .env.
+
+
+## Estrutura e deploy pelo GitHub
+
+Os arquivos index.html, styles.css, script.js, vercel.json e os demais recursos públicos ficam na raiz. A pasta dist não é utilizada.
+
+Na Vercel, usar o projeto studio-anisa da equipe luciano749s-projects, Framework Preset Other, Root Directory na raiz (campo vazio) e Output Directory `.`. Não há etapa de instalação ou build necessária. Os pushes para main acionam a publicação automática.
 
