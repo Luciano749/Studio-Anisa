@@ -1,0 +1,9 @@
+# Studio Anisa
+
+> Studio de beleza e autocuidado no bairro Santa Mônica, Uberlândia/MG, Brasil.
+
+- [Site oficial](https://studio-anisa.vercel.app/): serviços e solicitação de horário.
+- [Serviços](https://studio-anisa.vercel.app/#servicos): Cabelo, Maquiagem, Estética, Depilação, Drenagem, Atendimento pós-operatório, Alongamento de unhas, Manicure, Pedicure, Beauty spa, Esmaltação em gel. Nail design e nail designer no Santa Mônica, Uberlândia.
+- [Contato](https://studio-anisa.vercel.app/#agendamento): WhatsApp (34) 99872-4407. Av. Salomão Abraão, 2235, Santa Mônica, Uberlândia/MG.
+
+Pedidos pelo formulário não confirmam agendamento: o Studio confirma a disponibilidade pelo WhatsApp. Valores e horários devem ser consultados com a equipe.
