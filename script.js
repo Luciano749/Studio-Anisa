@@ -5,11 +5,6 @@
   const link = $('#whatsapp-link'), error = $('#form-error'), dateInput = $('#data');
   const menu = $('.menu-toggle'), nav = $('.site-nav');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const serviceDetails = [...document.querySelectorAll('.service-disclosure')];
-  const compactServices = matchMedia('(max-width: 620px)');
-  const syncServices = () => serviceDetails.forEach(details => { details.open = !compactServices.matches; });
-  syncServices();
-  compactServices.addEventListener('change', syncServices);
   // Cada metade deve cobrir a faixa inteira para não revelar espaço vazio no loop.
   const ribbon = $('.service-ribbon'), ribbonTrack = $('.ribbon-track');
   const ribbonGroup = ribbonTrack.querySelector('.ribbon-group');
@@ -97,5 +92,6 @@
     motion.addEventListener('change',e=>{if(e.matches){observer.disconnect(); document.querySelectorAll('.reveal').forEach(el=>el.classList.add('is-visible'));}});
   }
 })();
+
 
 

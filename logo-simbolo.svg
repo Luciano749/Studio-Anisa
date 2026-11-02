@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Símbolo floral do Studio Anisa</title>
+  <g stroke="#E3B967" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="80" cy="80" r="68"/>
+    <path d="M80 137V57"/>
+    <path d="M80 137C55 118 48 86 80 57c32 29 25 61 0 80Z"/>
+    <path d="M80 137C61 116 58 91 67 71c-19 10-29 30-26 47 8 10 23 17 39 19Z"/>
+    <path d="M80 137c19-21 22-46 13-66 19 10 29 30 26 47-8 10-23 17-39 19Z"/>
+    <path d="M80 137c-22-9-39-24-48-43 22 3 39 16 48 43Z"/>
+    <path d="M80 137c22-9 39-24 48-43-22 3-39 16-48 43Z"/>
+  </g>
+</svg>
+
