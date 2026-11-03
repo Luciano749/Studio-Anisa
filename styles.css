@@ -427,5 +427,9 @@ html { scroll-padding-top: 24px; }
 .brand-name small { color: var(--plum-deep); font-size: 10px; }
 .service-card { min-height: 0; }
 .service-disclosure:not([open]) > summary { padding-bottom: 27px; }
+.service-grid { align-items: start; }
+.service-grid .service-card { height: auto; }
+.service-disclosure { height: auto; }
+.service-content { overflow: hidden; }
 @media (max-width: 620px) { .eyebrow, .hero-bottom, .ribbon-track, .service-footnote, .footer-bottom { font-size: 12px; } .hero-bottom { line-height: 1.5; } .eyebrow { letter-spacing: .1em; } }
 

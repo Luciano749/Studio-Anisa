@@ -5,6 +5,72 @@
   const link = $('#whatsapp-link'), error = $('#form-error'), dateInput = $('#data');
   const menu = $('.menu-toggle'), nav = $('.site-nav');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.service-disclosure').forEach(details => {
+    const summary = details.querySelector(':scope > summary');
+    const content = details.querySelector(':scope > .service-content');
+    const card = details.closest('.service-card');
+    let targetOpen = details.open;
+    let cardAnimation = null;
+    let contentAnimation = null;
+
+    const clearAnimationStyles = () => {
+      card.style.removeProperty('height');
+      content.style.removeProperty('opacity');
+      content.style.removeProperty('transform');
+    };
+
+    summary.addEventListener('click', event => {
+      event.preventDefault();
+      const opening = !targetOpen;
+      targetOpen = opening;
+
+      const currentHeight = card.getBoundingClientRect().height;
+      const contentStyle = getComputedStyle(content);
+      const currentOpacity = details.open ? Number.parseFloat(contentStyle.opacity) : 0;
+      const currentTransform = details.open ? contentStyle.transform : 'translateY(-8px)';
+      cardAnimation?.cancel();
+      contentAnimation?.cancel();
+      cardAnimation = null;
+      contentAnimation = null;
+      if (motion.matches || typeof content.animate !== 'function') {
+        details.open = opening;
+        clearAnimationStyles();
+        return;
+      }
+
+      const borderHeight = Number.parseFloat(getComputedStyle(card).borderTopWidth) + Number.parseFloat(getComputedStyle(card).borderBottomWidth);
+      details.open = true;
+      const expandedHeight = card.scrollHeight + borderHeight;
+      details.open = false;
+      const collapsedHeight = card.getBoundingClientRect().height;
+      details.open = true;
+      const nextCardAnimation = card.animate(
+        [
+          { height: `${currentHeight}px` },
+          { height: `${opening ? expandedHeight : collapsedHeight}px` }
+        ],
+        { duration: 560, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' }
+      );
+      const nextContentAnimation = content.animate(
+        [
+          { opacity: currentOpacity, transform: currentTransform },
+          { opacity: opening ? 1 : 0, transform: opening ? 'translateY(0)' : 'translateY(-8px)' }
+        ],
+        { duration: 460, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' }
+      );
+      cardAnimation = nextCardAnimation;
+      contentAnimation = nextContentAnimation;
+      nextCardAnimation.onfinish = () => {
+        if (cardAnimation !== nextCardAnimation) return;
+        if (!opening) details.open = false;
+        nextCardAnimation.cancel();
+        nextContentAnimation.cancel();
+        clearAnimationStyles();
+        cardAnimation = null;
+        contentAnimation = null;
+      };
+    });
+  });
   // Cada metade deve cobrir a faixa inteira para não revelar espaço vazio no loop.
   const ribbon = $('.service-ribbon'), ribbonTrack = $('.ribbon-track');
   const ribbonGroup = ribbonTrack.querySelector('.ribbon-group');
